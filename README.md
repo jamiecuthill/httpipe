@@ -9,7 +9,7 @@ the content length to -1.
 A request interceptor is useful when altering a request before it reaches your
 http handlers.
 
-```
+```go
 handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
   w.Write([]byte("Hello World"))
 })
@@ -24,7 +24,7 @@ http.Handle("/", handler)
 
 Intercepting responses from http requests.
 
-```
+```go
 transport := NewInterceptingTransport(http.DefaultTransport, func(res *http.Response, err error) (*http.Response, error) {
     // Alter the response or error here
     return res, err
